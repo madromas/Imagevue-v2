@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <head>
+	<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <script>
+    	window.RufflePlayer.config = {
+    "autoplay": "on",
+    "unmuteOverlay": "hidden",
+    "splashScreen": false,
+    "letterbox": "on",
+    "base": "/"
+};
+    </script>
 <?php
 	$conf = ivPool::get('conf');
 	$keywords = $conf->get('/config/imagevue/seo/keywords');
