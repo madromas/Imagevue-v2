@@ -119,26 +119,30 @@ class ivRecursiveFilterIteratorExclude extends RecursiveFilterIterator
 	}
 
 	public function accept()
-	{
-		$foldersRegexp = '#^(' . implode('|', array_map(create_function('$s', 'return preg_quote($s, "#");'), $this->_folders)) . ')(\/|$)#';
-		if ($this->current()->isFile()) {
-			if ('users.php' === $this->current()->getFilename() || '.xml' === substr($this->current()->getFilename(), -4)) {
-				return true;
-			}
-			return false;
-		} else {
-			$path = str_replace('//', '/', str_replace('\\', '/', substr($this->current()->getPathname(), strlen(ROOT_DIR))));
-			if (!preg_match($foldersRegexp, $path)) {
-				return false;
-			}
-			foreach ($this->_excludeFolders as $curPath) {
-				if (substr($path, 0, strlen($curPath)) === $curPath) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
+{
+    // Replaced create_function with a modern anonymous function
+    $foldersRegexp = '#^(' . implode('|', array_map(function($s) {
+        return preg_quote($s, "#");
+    }, $this->_folders)) . ')(\/|$)#';
+
+    if ($this->current()->isFile()) {
+        if ('users.php' === $this->current()->getFilename() || '.xml' === substr($this->current()->getFilename(), -4)) {
+            return true;
+        }
+        return false;
+    } else {
+        $path = str_replace('//', '/', str_replace('\\', '/', substr($this->current()->getPathname(), strlen(ROOT_DIR))));
+        if (!preg_match($foldersRegexp, $path)) {
+            return false;
+        }
+        foreach ($this->_excludeFolders as $curPath) {
+            if (substr($path, 0, strlen($curPath)) === $curPath) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
 
 }
 
