@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lang>
+	<image>Image</image>
+	<page>Page</page>
+	<next_image>Next</next_image>
+	<previous_image>Previous</previous_image>
+	<next_thumbnails>Next Thumbnails</next_thumbnails>
+	<previous_thumbnails>Previous Thumbnails</previous_thumbnails>
+	<popup>Open in Popup</popup>
+	<window>Open in New Window</window>
+	<download>Download</download>
+	<zoomin>Zoom In</zoomin>
+	<zoomout>Zoom Out</zoomout>
+	<play>Play</play>
+	<stop>Stop</stop>
+	<showimage>Show All Images</showimage>
+	<showthumbnails>Show Thumbnails</showthumbnails>
+	<imageinfo>Image Info</imageinfo>
+	<mainmenu>Menu</mainmenu>
+	<sendemail>Email</sendemail>
+	<login>Login</login>
+	<logout>Logout</logout>
+	<open>Open</open>
+	<copylocation>Copy Location</copylocation>
+	<enterfullscreen>Full Screen</enterfullscreen>
+	<exitfullscreen>Exit Full Screen</exitfullscreen>
+	<videofullscreen>Video Full Screen</videofullscreen>
+	<audio>Audio</audio>
+	<volume>Volume</volume>
+	<yourname>Your Name</yourname>
+	<youremail>Your Email</youremail>
+	<yourfriendsemail>Friend's Email</yourfriendsemail>
+	<message>Message</message>
+	<send>Send</send>
+	<sent>Sent Successfully</sent>
+	<contact>Contact Us</contact>
+	<sendlink>Send Link</sendlink>
+	<purchase>Purchase</purchase>
+	<link>Link</link>
+	<sfx>Sound FX On/Off</sfx>
+</lang>
