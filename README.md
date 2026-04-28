@@ -1,5 +1,5 @@
 # Imagevue-v2 full gallery
-Imagevue-v2
+Imagevue-v2, running on php 8.0
 
 <img width="700" alt="Screenshot 2026-04-28 153229" src="https://github.com/user-attachments/assets/a13e0fa3-6636-4c85-91e6-3f54181e3086" />
 
