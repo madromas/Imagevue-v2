@@ -56,33 +56,35 @@ class ivControllerFront extends ivControllerAbstract
 	 * @param string $basePath
 	 */
 	public function dispatch($basePath)
-	{
-// FIXME Debug data
-if (!headers_sent()) {
-	header('X-FirePHP-Data-100000000001: {');
-	header('X-FirePHP-Data-300000000001: "FirePHP.Firebug.Console":[');
-	header('X-FirePHP-Data-399999999999: ["__SKIP__"]],');
-	header('X-FirePHP-Data-999999999999: "__SKIP__":"__SKIP__"}');
-}
+{
+    // FIXME Debug data
+    if (!headers_sent()) {
+        header('X-FirePHP-Data-100000000001: {');
+        header('X-FirePHP-Data-300000000001: "FirePHP.Firebug.Console":[');
+        header('X-FirePHP-Data-399999999999: ["__SKIP__"]],');
+        header('X-FirePHP-Data-999999999999: "__SKIP__":"__SKIP__"}');
+    }
 
-		if (get_magic_quotes_gpc()) {
-			$_GET = stripslashes_recursive($_GET);
-			$_POST = stripslashes_recursive($_POST);
-			$_REQUEST = stripslashes_recursive($_REQUEST);
-		}
+    // get_magic_quotes_gpc() was removed in PHP 8.0.
+    // Since it's always false now, we just skip this block.
+    if (false) {
+        $_GET = stripslashes_recursive($_GET);
+        $_POST = stripslashes_recursive($_POST);
+        $_REQUEST = stripslashes_recursive($_REQUEST);
+    }
 
-		// Basic routing
-		$routingRules = array();
-		include($basePath . 'routing.inc.php');
-		foreach ($routingRules as $rule) {
-			$matched = 0;
-			foreach ($rule['match'] as $k => $v) {
-				if ((isset($_GET[$k]) && $_GET[$k] == $v)
-					|| ('__empty' == $v && (!isset($_GET[$k]) || empty($_GET[$k])))
-					|| ('__any' == $v && (isset($_GET[$k]) || !empty($_GET[$k])))) {
-					$matched++;
-				}
-			}
+    // Basic routing
+    $routingRules = array();
+    include($basePath . 'routing.inc.php');
+    foreach ($routingRules as $rule) {
+        $matched = 0;
+        foreach ($rule['match'] as $k => $v) {
+            if ((isset($_GET[$k]) && $_GET[$k] == $v)
+                || ('__empty' == $v && (!isset($_GET[$k]) || empty($_GET[$k])))
+                || ('__any' == $v && (isset($_GET[$k]) || !empty($_GET[$k])))) {
+                $matched++;
+            }
+        }
 			if (count($rule['match']) == $matched && !isset($controllerName) && !isset($actionName)) {
 				$controllerName = (string) $rule['routeTo']['controller'];
 				$actionName = (string) $rule['routeTo']['action'];

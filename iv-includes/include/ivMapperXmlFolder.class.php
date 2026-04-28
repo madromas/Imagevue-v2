@@ -518,37 +518,55 @@ class ivMapperXmlFolder extends ivMapperXmlAbstract
 		}
 
 		switch ($sort) {
-			case ivFolder::SORT_ORDER_MANUAL:
-				usort($files, array($this, '_manualSort'));
-				break;
-			case ivFolder::SORT_ORDER_NAME_ASC:
-				usort($files, create_function('$f1, $f2', 'return strcmp(mb_strtolower($f1->name, "UTF-8"), mb_strtolower($f2->name, "UTF-8"));'));
-				break;
-			case ivFolder::SORT_ORDER_NAME_DESC:
-				usort($files, create_function('$f1, $f2', 'return strcmp(mb_strtolower($f2->name, "UTF-8"), mb_strtolower($f1->name, "UTF-8"));'));
-				break;
-			case ivFolder::SORT_ORDER_TITLE_ASC:
-				usort($files, create_function('$f1, $f2', 'return strcmp(mb_strtolower($f1->getTitle(), "UTF-8"), mb_strtolower($f2->getTitle(), "UTF-8"));'));
-				break;
-			case ivFolder::SORT_ORDER_TITLE_DESC:
-				usort($files, create_function('$f1, $f2', 'return strcmp(mb_strtolower($f2->getTitle(), "UTF-8"), mb_strtolower($f1->getTitle(), "UTF-8"));'));
-				break;
-			case ivFolder::SORT_ORDER_DATE_ASC:
-				usort($files, create_function('$f1, $f2', 'return intcmp($f1->date, $f2->date);'));
-				break;
-			case ivFolder::SORT_ORDER_DATE_DESC:
-				usort($files, create_function('$f1, $f2', 'return intcmp($f2->date, $f1->date);'));
-				break;
-			case ivFolder::SORT_ORDER_SIZE_ASC:
-				usort($files, create_function('$f1, $f2', 'return intcmp($f1->size, $f2->size);'));
-				break;
-			case ivFolder::SORT_ORDER_SIZE_DESC:
-				usort($files, create_function('$f1, $f2', 'return intcmp($f2->size, $f1->size);'));
-				break;
-			case ivFolder::SORT_ORDER_RANDOM:
-				usort($files, create_function('$f1, $f2', 'return rand(-1, 1);'));
-				break;
-		}
+    case ivFolder::SORT_ORDER_MANUAL:
+        usort($files, array($this, '_manualSort'));
+        break;
+    case ivFolder::SORT_ORDER_NAME_ASC:
+        usort($files, function($f1, $f2) {
+            return strcmp(mb_strtolower($f1->name, "UTF-8"), mb_strtolower($f2->name, "UTF-8"));
+        });
+        break;
+    case ivFolder::SORT_ORDER_NAME_DESC:
+        usort($files, function($f1, $f2) {
+            return strcmp(mb_strtolower($f2->name, "UTF-8"), mb_strtolower($f1->name, "UTF-8"));
+        });
+        break;
+    case ivFolder::SORT_ORDER_TITLE_ASC:
+        usort($files, function($f1, $f2) {
+            return strcmp(mb_strtolower($f1->getTitle(), "UTF-8"), mb_strtolower($f2->getTitle(), "UTF-8"));
+        });
+        break;
+    case ivFolder::SORT_ORDER_TITLE_DESC:
+        usort($files, function($f1, $f2) {
+            return strcmp(mb_strtolower($f2->getTitle(), "UTF-8"), mb_strtolower($f1->getTitle(), "UTF-8"));
+        });
+        break;
+    case ivFolder::SORT_ORDER_DATE_ASC:
+        usort($files, function($f1, $f2) {
+            return intcmp($f1->date, $f2->date);
+        });
+        break;
+    case ivFolder::SORT_ORDER_DATE_DESC:
+        usort($files, function($f1, $f2) {
+            return intcmp($f2->date, $f1->date);
+        });
+        break;
+    case ivFolder::SORT_ORDER_SIZE_ASC:
+        usort($files, function($f1, $f2) {
+            return intcmp($f1->size, $f2->size);
+        });
+        break;
+    case ivFolder::SORT_ORDER_SIZE_DESC:
+        usort($files, function($f1, $f2) {
+            return intcmp($f2->size, $f1->size);
+        });
+        break;
+    case ivFolder::SORT_ORDER_RANDOM:
+        usort($files, function($f1, $f2) {
+            return rand(-1, 1);
+        });
+        break;
+}
 
 		if (ivFolder::SORT_ORDER_RANDOM !== $sort) {
 			foreach ($files as $key => $file) {

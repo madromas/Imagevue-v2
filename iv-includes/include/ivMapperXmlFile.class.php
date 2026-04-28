@@ -484,7 +484,7 @@ class ivMapperXmlFile extends ivMapperXmlAbstract
 		$data = fread($handle, 2);
 
 		// Check that the third character is 0xFF (Start of first segment header)
-		if ($data{0} != "\xFF") {
+		if ($data[0] != "\xFF") {
 			// NO FF found - close file and return - JPEG is probably corrupted
 			fclose($handle);
 			return false;
@@ -496,10 +496,10 @@ class ivMapperXmlFile extends ivMapperXmlAbstract
 		// Cycle through the file until, one of: 1) an EOI (End of image) marker is hit,
 		//                                       2) we have hit the compressed image data (no more headers are allowed after data)
 		//                                       3) or end of file is hit
-		while (($data{1} != "\xD9") && (!$hit_compressed_image_data) && (!feof($handle))) {
+		while (($data[1] != "\xD9") && (!$hit_compressed_image_data) && (!feof($handle))) {
 			// Found a segment to look at.
 			// Check that the segment marker is not a Restart marker - restart markers don't have size or data after them
-			if ((ord($data{1}) < 0xD0) || (ord($data{1}) > 0xD7)) {
+			if ((ord($data[1]) < 0xD0) || (ord($data[1]) > 0xD7)) {
 				// Segment isn't a Restart marker
 				// Read the next two bytes (size)
 				$sizestr = fread($handle, 2);
@@ -514,7 +514,7 @@ class ivMapperXmlFile extends ivMapperXmlAbstract
 				$segdata = fread($handle, $decodedsize['size'] - 2);
 
 				// Store the segment information in the output array
-				if (0xE1 == ord($data{1}) && strncmp($segdata, "http://ns.adobe.com/xap/1.0/\x00", 29) == 0) {
+				if (0xE1 == ord($data[1]) && strncmp($segdata, "http://ns.adobe.com/xap/1.0/\x00", 29) == 0) {
 					$adobeXmpData = substr($segdata, 29);
 					fclose($handle);
 					return $adobeXmpData;
@@ -522,7 +522,7 @@ class ivMapperXmlFile extends ivMapperXmlAbstract
 			}
 
 			// If this is a SOS (Start Of Scan) segment, then there is no more header data - the compressed image data follows
-			if ($data{1} == "\xDA") {
+			if ($data[1] == "\xDA") {
 				// Flag that we have hit the compressed image data - exit loop as no more headers available.
 				$hit_compressed_image_data = TRUE;
 			} else {
@@ -530,7 +530,7 @@ class ivMapperXmlFile extends ivMapperXmlAbstract
 				$data = fread($handle, 2);
 
 				// Check that the first byte of the two is 0xFF as it should be for a marker
-				if ($data{0} != "\xFF") {
+				if ($data[0] != "\xFF") {
 					// NO FF found - close file and return - JPEG is probably corrupted
 					fclose($handle);
 					return false;
