@@ -2,19 +2,19 @@
 <div class="narrow">
 
 	<div class="bodyContent single">
-		<h1>创建缩略图</h1>
+		<h1>Create Thumbnails</h1>
 
 		<?php if (!in_array('noteThumbs', ivPool::get('notes'))): ?>
 			<div class="note">
 				<a id="noteThumbs" href="#" class="close">&times;</a>
-				<a class="iv-ext" title="How to create thumbnails" target="_blank" href="http://imagevuex.com/documentation/create-thumbnails/">怎样创建缩略图</a>
+				<a class="iv-ext" title="How to create thumbnails" target="_blank" href="http://imagevuex.com/documentation/create-thumbnails/">How to create thumbnails</a>
 			</div>
 		<?php endif; ?>
 
 		<form action="" method="post">
 		<fieldset>
 			<div class="row last">
-				开始文件夹
+				Start folder
 				<select name="publishData[path]">
 					<?php foreach ($this->folderTreeIterator as $folder):?>
 						<option value="<?php echo htmlspecialchars($folder->getPrimary()); ?>" <?php echo (ivFilepath::directory($this->path) == $folder->getPrimary() ? 'selected="selected"' : ''); ?>><?php echo str_repeat('--', $this->folderTreeIterator->getDepth()); ?> <?php echo htmlspecialchars(smartStripTagsSubstr(t($folder->getTitle()))); ?>&nbsp;&nbsp;</option>
@@ -27,23 +27,23 @@
 		<fieldset>
 			<div class="row">
 				<label class="inline">
-					宽度:
+					Width:
 					<input type="text" class="text thumbSize" name="publishData[width]" value="<?php echo htmlspecialchars($conf->get('/config/imagevue/thumbnails/thumbnail/boxwidth')); ?>" />
 				</label>
 				&nbsp;&nbsp;&nbsp;
 				<label class="inline">
-					高度:
+					Height:
 					<input type="text" class="text thumbSize" name="publishData[height]" value="<?php echo htmlspecialchars($conf->get('/config/imagevue/thumbnails/thumbnail/boxheight')); ?>" />
 				</label>
 
 			</div>
 			<div class="row last">
 				<label class="inline">
-					<input type="radio" class="radio" name="publishData[resizetype]" value="<?php echo urlencode(ivImage::IMAGE_RESIZETYPE_CROPTOBOX); ?>" <?php echo (ivImage::IMAGE_RESIZETYPE_CROPTOBOX == $conf->get('/config/imagevue/thumbnails/thumbnail/resizetype') ? 'checked="checked"' : ''); ?> /> 裁剪成盒子
+					<input type="radio" class="radio" name="publishData[resizetype]" value="<?php echo urlencode(ivImage::IMAGE_RESIZETYPE_CROPTOBOX); ?>" <?php echo (ivImage::IMAGE_RESIZETYPE_CROPTOBOX == $conf->get('/config/imagevue/thumbnails/thumbnail/resizetype') ? 'checked="checked"' : ''); ?> /> Crop to box
 				</label>
 				&nbsp;&nbsp;&nbsp;
 				<label class="inline">
-					<input type="radio" class="radio" name="publishData[resizetype]" value="<?php echo urlencode(ivImage::IMAGE_RESIZETYPE_RESIZETOBOX); ?>" <?php echo (ivImage::IMAGE_RESIZETYPE_RESIZETOBOX == $conf->get('/config/imagevue/thumbnails/thumbnail/resizetype') ? 'checked="checked"' : ''); ?> /> 调整尺寸成盒子
+					<input type="radio" class="radio" name="publishData[resizetype]" value="<?php echo urlencode(ivImage::IMAGE_RESIZETYPE_RESIZETOBOX); ?>" <?php echo (ivImage::IMAGE_RESIZETYPE_RESIZETOBOX == $conf->get('/config/imagevue/thumbnails/thumbnail/resizetype') ? 'checked="checked"' : ''); ?> /> Resize to box
 				</label>
 			</div>
 		</fieldset>
@@ -53,19 +53,19 @@
 			<div class="row">
 				<label class="inline">
 					<input name="publishData[thumbnails]" value="create" type="radio"  class="radio" checked="checked"/>
-					创建缺少的缩略图
+					Create missing thumbnails
 				</label>
 			</div>
 			<div class="row last">
 				<label  class="inline">
 					<input name="publishData[thumbnails]"  value="recreate" type="radio" class="radio" />
-					重新创建所有缩略图
+					Recreate all thumbnails
 				</label>
 			</div>
 		</fieldset>
 
 		<div class="controls">
-			<input type="submit" class="buttonSave" value="创建" />
+			<input type="submit" class="buttonSave" value="Create" />
 		</div>
 	</form>
 	</div>

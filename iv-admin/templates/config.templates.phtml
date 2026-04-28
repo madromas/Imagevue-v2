@@ -1,27 +1,27 @@
 <div class="bodyContent single">
 	<div class="contentSubMenu">
-		<a title="Edit Gallery Settings" href="index.php?c=config">画廊设置</a>
-		<a title="Edit Email Templates" class="selected" href="index.php?c=config&amp;a=templates">邮件模版</a>
-		<a title="Edit Custom CSS" href="index.php?c=config&amp;a=css">自定义样式</a>
+		<a title="Edit Gallery Settings" href="index.php?c=config">Gallery Settings</a>
+		<a title="Edit Email Templates" class="selected" href="index.php?c=config&amp;a=templates">Email Templates</a>
+		<a title="Edit Custom CSS" href="index.php?c=config&amp;a=css">Custom CSS</a>
 
 	</div>
 
 	<?php if (!in_array( 'noteSettings', ivPool::get( 'notes'))): ?>
 		<div class="note">
 			<a id="noteTemplates" href="#" class="close">&times;</a>
-			这里你可以更改
-			<a title="About Email Templates" href="http://imagevuex.com/documentation/sendemail/#templates" target="_blank" class="iv-ext">邮件模版</a>
+			Here you can edit your 
+			<a title="About Email Templates" href="http://imagevuex.com/documentation/sendemail/#templates" target="_blank" class="iv-ext">Email Templates</a>
 		</div>
 	<?php endif; ?>
 
 	<form method="post" action="">
 		<div class="controls left">
-			<input type="submit" class="button buttonSave" name="save" value="保存"/>
+			<input type="submit" class="button buttonSave" name="save" value="Save"/>
 		</div>
 
 		<div class="contentMenu" id="templatesTabHeaders">
-			<a href="#contact" class="tabHeader">联系邮箱</a>
-			<a href="#sendlink" class="tabHeader">发送链接</a>
+			<a href="#contact" class="tabHeader">Contact Email</a>
+			<a href="#sendlink" class="tabHeader">Send Link</a>
 		</div>
 
 		<div class="formTree">
@@ -31,7 +31,7 @@
 						<tr>
 							<td class="itemControl">
 								<div class="title">
-									联系邮箱模版:
+									Contact Email Template:
 								</div>
 								<div class="textarea">
 									<textarea name="contactTemplate" rows="10" cols="20"><?php echo htmlspecialchars($this->contactTemplate) ?></textarea>
@@ -80,7 +80,7 @@
 		</div>
 
 		<div class="controls left">
-			<input type="submit" class="button buttonSave" name="save" value="保存"/>
+			<input type="submit" class="button buttonSave" name="save" value="Save"/>
 		</div>
 	</form>
 </div>

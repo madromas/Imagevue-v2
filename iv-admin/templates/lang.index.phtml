@@ -7,8 +7,8 @@
 		<?php if (!in_array('noteLanguage', ivPool::get('notes'))): ?>
 			<div class="note">
 				<a id="noteLanguage" href="#" class="close">&times;</a>
-				语言项目用于导航和控件的Flash画廊接口。
-				<a title="Imagevue Languages Page" href="http://imagevuex.com/documentation/languages-page/" taget="_blank" class="iv-ext">语言的页面</a>
+				Language items used for navigation and controls in the Flash gallery interface.
+				<a title="Imagevue Languages Page" href="http://imagevuex.com/documentation/languages-page/" taget="_blank" class="iv-ext">Languages Page</a>
 			</div>
 		<?php endif; ?>
 
@@ -16,11 +16,11 @@
 			<form method="post" action="">
 				<div class="controls left">
 					<input type="submit"  class="button buttonSave" name="Save" value="Save" />
-					<a class="button buttonCheckbox" href = "index.php?c=lang&amp;a=use&amp;name=<?php echo urlencode($this->lang); ?>">使用<?php echo htmlspecialchars(ucfirst($this->lang)); ?></a>
+					<a class="button buttonCheckbox" href = "index.php?c=lang&amp;a=use&amp;name=<?php echo urlencode($this->lang); ?>">Use <?php echo htmlspecialchars(ucfirst($this->lang)); ?></a>
 
-					<a href="#"  class="button buttonNew" onclick="var langName = window.prompt('Enter name for a new language'); if (langName) {location.href = 'index.php?c=lang&amp;name=' + langName;} return false;">新语言</a>
+					<a href="#"  class="button buttonNew" onclick="var langName = window.prompt('Enter name for a new language'); if (langName) {location.href = 'index.php?c=lang&amp;name=' + langName;} return false;">New Language</a>
 					&nbsp;
-					编辑:
+					Edit:
 					 <select onchange="location.href = 'index.php?c=lang&amp;name=' + this.value;">
 						<?php $languages = $this->languages; ?>
 						<?php foreach ($languages as $lang): ?>
@@ -31,7 +31,7 @@
 				<table class="nice tableLanguage">
 					<thead>
 						<tr>
-							<th>语言项目</th>
+							<th>Language Item</th>
 							<th><?php echo htmlspecialchars(ucfirst($this->lang)); ?> text</th>
 						</tr>
 					</thead>

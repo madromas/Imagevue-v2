@@ -231,24 +231,24 @@ $pageTitle = implode(' | ', $titleArray);
 		<ul>
 
 			<li>
-				<a href="index.php<?php echo (isset($_SESSION['imagevue']['lastManageLink']) ? $_SESSION['imagevue']['lastManageLink'] : ''); ?>" <?php echo ('index' == $this->moduleName || 'file' == $this->moduleName ? 'class="selected"' : ''); ?> title="Manage photos">管理</a>
+				<a href="index.php<?php echo (isset($_SESSION['imagevue']['lastManageLink']) ? $_SESSION['imagevue']['lastManageLink'] : ''); ?>" <?php echo ('index' == $this->moduleName || 'file' == $this->moduleName ? 'class="selected"' : ''); ?> title="Manage photos">Manage</a>
 			</li>
 			<?php if (ivAcl::isAdmin()): ?>
 				<li>
-					<a href="index.php?c=config" <?php echo ('config' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Change Settings">设置</a>
+					<a href="index.php?c=config" <?php echo ('config' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Change Settings">Settings</a>
 				</li>
 				<li>
-					<a href="index.php?c=theme" <?php echo ('theme' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Themes, Edit CSS">主题</a>
+					<a href="index.php?c=theme" <?php echo ('theme' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Themes, Edit CSS">Themes</a>
 				</li>
 				<li>
-					<a href="index.php?c=user" <?php echo ('user' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Manage Users">用户</a>
+					<a href="index.php?c=user" <?php echo ('user' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Manage Users">Users</a>
 				</li>
 				<li>
-					<a href="index.php?c=lang" <?php echo ('lang' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Change Languages">语言</a>
+					<a href="index.php?c=lang" <?php echo ('lang' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Change Languages">Languages</a>
 				</li>
 
 			<?php endif; ?>
-				<li><a href="index.php?c=publish" <?php echo ('publish' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Create Thumbnails">缩略图</a></li>
+				<li><a href="index.php?c=publish" <?php echo ('publish' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Create Thumbnails">Thumbnails</a></li>
 			<?php if (ivAcl::isAdmin()): ?>
 				<li>
 					<a  class="fotomoto <?php echo ('fotomoto' == $this->moduleName ? 'selected ' : ''); ?>" href="index.php?c=fotomoto" title="Fotomoto">Fotomoto</a>
@@ -257,7 +257,7 @@ $pageTitle = implode(' | ', $titleArray);
 
 			<?php if (!ivPool::get('conf')->get('/config/imagevue/settings/disableDashboard')): ?>
 				<li>
-					<a href="index.php?c=dashboard" <?php echo ('dashboard' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Imagevue Dashboard">仪表盘</a>
+					<a href="index.php?c=dashboard" <?php echo ('dashboard' == $this->moduleName ? 'class="selected" ' : ''); ?> title="Imagevue Dashboard">Dashboard</a>
 				</li>
 			<?php endif ?>
 

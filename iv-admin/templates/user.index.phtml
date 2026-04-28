@@ -1,26 +1,24 @@
 <div class="narrow">
 
 	<div  class="bodyContent single">
-		<h1>用户管理</h1>
+		<h1>User Management</h1>
 
 		<?php if (!in_array('noteUsers', ivPool::get('notes'))): ?>
 			<div class="note">
 				<a id="noteUsers" href="#" class="close">&times;</a>
-				你可以创建多个用户用于管理面板
-				<a title="Imagevue User Management" href="http://imagevuex.com/documentation/settings-page/" class="iv-ext" target="_blank">用户页</a>
+				You can create multiple users for access to the management panel.
+				<a title="Imagevue User Management" href="http://imagevuex.com/documentation/settings-page/" class="iv-ext" target="_blank">Users Page</a>
 			</div>
 		<?php endif; ?>
 
-		<!-- #user -->
-
 		<div class="controls left">
-			<a href="?c=user&amp;a=edit" class="button buttonNew">新建用户</a>
+			<a href="?c=user&amp;a=edit" class="button buttonNew">Add New User</a>
 		</div>
 
 	        <table class="nice">
 				<thead>
-					<th>用户</td>
-					<th>权限</td>
+					<th>User</td>
+					<th>Access</td>
 					<th>&nbsp;</td>
 				</thead>
 
@@ -36,8 +34,8 @@
 							<td><a title="edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>"><?php echo ($this->user == $user->login ? '<b>' . htmlspecialchars($user->login) . '<b>' : htmlspecialchars($user->login)); ?></a></td>
 								<td></td>
 							<td>
-								<a  class="button buttonEdit" title="Edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>">编辑</a>
-								<a class="button buttonDelete" title="Delete" href="?c=user&amp;a=delete&amp;login=<?php echo urlencode($user->login) ?>" onclick="return confirm('Are you sure you want to delete user <?php echo htmlspecialchars($user->login); ?>?');">删除</a>
+								<a  class="button buttonEdit" title="Edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>">Edit</a>
+								<a class="button buttonDelete" title="Delete" href="?c=user&amp;a=delete&amp;login=<?php echo urlencode($user->login) ?>" onclick="return confirm('Are you sure you want to delete user <?php echo htmlspecialchars($user->login); ?>?');">Delete</a>
 							</td>
 						</tr>
 
@@ -53,8 +51,8 @@
 							<td><a title="edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>"><?php echo urlencode($user->login) ?></a></td>
 							<td><?php echo htmlspecialchars($user->access); ?></td>
 							<td>
-								<a  class="button buttonEdit" title="Edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>">编辑</a>
-							<a  class="button buttonDelete" title="Delete" href="?c=user&amp;a=delete&amp;login=<?php echo urlencode($user->login) ?>">删除</a>
+								<a  class="button buttonEdit" title="Edit" href="?c=user&amp;a=edit&amp;login=<?php echo urlencode($user->login) ?>">Edit</a>
+							<a  class="button buttonDelete" title="Delete" href="?c=user&amp;a=delete&amp;login=<?php echo urlencode($user->login) ?>">Delete</a>
 							</td>
 						</tr>
 
@@ -66,7 +64,7 @@
 				</table>
 
 					<div class="controls left">
-						<a href="?c=user&amp;a=edit" class="button buttonNew">新建用户</a>
+						<a href="?c=user&amp;a=edit" class="button buttonNew">Add New User</a>
 					</div>
 	</div>
 </div>
