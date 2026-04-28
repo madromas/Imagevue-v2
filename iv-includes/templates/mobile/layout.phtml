@@ -96,7 +96,8 @@
 						$filter3 = new ivRecursiveFolderIteratorShare($filter2);
 						$folderTreeIterator = new RecursiveIteratorIterator($filter3, RecursiveIteratorIterator::SELF_FIRST);
 
-						if (count($folderTreeIterator)):
+						$folderTreeIterator->rewind();
+                        if ($folderTreeIterator->valid()):
 				?>
 					<div class="menuItems">
 						<?php $oldDepth = -1; foreach ($folderTreeIterator as $folder): ?>
