@@ -91,13 +91,22 @@ if (IS_MOBILE) {
 
 
 						<h1 class="title">
-							<?php if(count($link)) {
-								echo '<a href="' . htmlspecialchars($link[0]) . '"';
-								if (count($link>1)) echo ' target="' . htmlspecialchars($link[1]) . '"';
-								echo '>'; }
-	 						?>
+							<?php 
+// 1. Ensure $link is an array before counting
+$linkArray = (array)$link; 
+
+if (count($linkArray) > 0) {
+    echo '<a href="' . htmlspecialchars($linkArray[0]) . '"';
+    
+    // 2. Fixed the typo: move the >1 OUTSIDE the count parentheses
+    if (count($linkArray) > 1) {
+        echo ' target="' . htmlspecialchars($linkArray[1]) . '"';
+    }
+    echo '>'; 
+}
+?>
 							<?php echo t($conf->get('/config/imagevue/settings/autoTitling') ? $this->file->getTitle() : $this->file->title); ?>
-							<?php echo (count($link)) ? '</a>' : ''; ?>
+<?php echo (is_array($link) && count($link)) ? '</a>' : ''; ?>
 						</h1>
 						<?php if (!empty($this->file->description)): ?>
 							<h2 class="description">
